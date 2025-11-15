@@ -25,12 +25,22 @@ btn.Position = UDim2.new(0.5, -25, 0.5, -25)
 btn.BackgroundTransparency = 1
 btn.Draggable = true
 
--- CHỈ GIỮ LẠI MỖI IMAGE (không crop)
 btn.Image = "rbxassetid://97239349377509"
 btn.ScaleType = Enum.ScaleType.Fit
 
+-- Cooldown setup
+local canClick = true
+local cooldown = 0.75 -- giây giữa các click
+
 btn.MouseButton1Click:Connect(function()
-    Window:Toggle()
+    if canClick then
+        canClick = false
+        Window:Toggle()
+        task.wait(cooldown)
+        canClick = true
+    else
+        print("Vui lòng chờ một chút trước khi click lại!")
+    end
 end)
 
 -- Viền gradient
