@@ -30,7 +30,7 @@ btn.ScaleType = Enum.ScaleType.Fit
 
 -- Cooldown setup
 local canClick = true
-local cooldown = 0.35 -- giây giữa các click
+local cooldown = 0.15 -- giây giữa các click
 
 btn.MouseButton1Click:Connect(function()
     if canClick then
