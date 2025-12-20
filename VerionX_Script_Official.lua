@@ -24,13 +24,17 @@ btn.Size = UDim2.new(0, 50, 0, 50)
 btn.Position = UDim2.new(0.5, -25, 0.5, -25)
 btn.BackgroundTransparency = 1
 btn.Draggable = true
-
 btn.Image = "rbxassetid://97239349377509"
 btn.ScaleType = Enum.ScaleType.Fit
 
+-- Bo tròn nhẹ ImageButton
+local btnCorner = Instance.new("UICorner")
+btnCorner.CornerRadius = UDim.new(0, 15)
+btnCorner.Parent = btn
+
 -- Cooldown setup
 local canClick = true
-local cooldown = 0.08 -- giây giữa các click
+local cooldown = 0.08
 
 btn.MouseButton1Click:Connect(function()
     if canClick then
@@ -38,8 +42,6 @@ btn.MouseButton1Click:Connect(function()
         Window:Toggle()
         task.wait(cooldown)
         canClick = true
-    else
-        print("Vui lòng chờ một chút trước khi click lại!")
     end
 end)
 
@@ -52,6 +54,11 @@ border.BackgroundTransparency = 0
 border.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 border.ZIndex = btn.ZIndex - 1
 border.ClipsDescendants = true
+
+-- Bo tròn nhẹ viền
+local borderCorner = Instance.new("UICorner")
+borderCorner.CornerRadius = UDim.new(0, 15)
+borderCorner.Parent = border
 
 -- Gradient xoay
 local gradient = Instance.new("UIGradient")
