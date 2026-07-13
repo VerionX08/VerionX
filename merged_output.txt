@@ -1,7 +1,7 @@
 
-=========================================
-// FILE: 01_Config.lua
-=========================================
+--=========================================
+--// FILE: 01_Config.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -208,9 +208,9 @@ Config.Debug = false
 
 return Config
 
-=========================================
-// FILE: 02_Theme.lua
-=========================================
+--=========================================
+--// FILE: 02_Theme.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -377,9 +377,9 @@ Theme.Shadow = {
 
 return Theme
 
-=========================================
-// FILE: 03_Helpers.lua
-=========================================
+--=========================================
+--// FILE: 03_Helpers.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -707,9 +707,9 @@ end
 
 return Helpers
 
-=========================================
-// FILE: 04_UI.lua
-=========================================
+--=========================================
+--// FILE: 04_UI.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -1120,9 +1120,9 @@ end
 
 return UI
 
-=========================================
-// FILE: 05_Card.lua
-=========================================
+--=========================================
+--// FILE: 05_Card.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -1444,9 +1444,273 @@ end
 
 return Card
 
-=========================================
-// FILE: 07_Search.lua
-=========================================
+--==================================================
+-- ModernDataUI
+-- 06_Data.lua
+--==================================================
+
+local Data = {}
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Helpers = require(script.Parent["03_Helpers"])
+
+--------------------------------------------------
+-- Modules
+--------------------------------------------------
+
+local SeedData = require(
+	ReplicatedStorage.SharedModules.SeedData
+)
+
+local PetData = require(
+	ReplicatedStorage.SharedData.PetData
+)
+
+local PackData = require(
+	ReplicatedStorage.SharedModules.SeedPackData
+)
+
+local SeedModule = ReplicatedStorage.SharedModules.SeedData
+
+local SeedImages = SeedModule:WaitForChild("SeedImages")
+
+local PlantImages = SeedModule:WaitForChild("PlantImages")
+
+local FruitImages = SeedModule:WaitForChild("FruitImages")
+
+--------------------------------------------------
+-- Pet Description
+--------------------------------------------------
+
+local function GetPetDescription(species, pet)
+
+	local desc = pet.Description
+
+	if type(desc) == "string" then
+		return desc
+	end
+
+	local success, result = pcall(function()
+
+		if type(desc) == "function" then
+			return desc("Normal", "Normal")
+		end
+
+		if PetData.GetDescription then
+			return PetData.GetDescription(
+				species,
+				"Normal",
+				"Normal"
+			)
+		end
+
+		return ""
+
+	end)
+
+	return success and tostring(result) or ""
+
+end
+
+--------------------------------------------------
+-- Seeds
+--------------------------------------------------
+
+function Data.GetSeeds()
+
+	local result = {}
+
+	for _, seed in ipairs(SeedData) do
+
+		if seed.SeedName then
+
+			table.insert(result,{
+
+				Title = seed.SeedName,
+
+				Badge = seed.Rarity,
+
+				Description =
+
+					("Rarity: %s\nPrice: %s Sheckles\nGrow: %s")
+
+					:format(
+
+						Helpers.Safe(seed.Rarity),
+
+						Helpers.FormatNumber(
+							seed.PurchasePrice
+						),
+
+						Helpers.FormatTime(
+							seed.PrimeTime
+						)
+
+					),
+
+				Images = Helpers.GetSeedImages(
+
+					seed.SeedName,
+
+					SeedImages,
+
+					PlantImages,
+
+					FruitImages
+
+				),
+
+				Raw = seed,
+
+			})
+
+		end
+
+	end
+
+	return result
+
+end
+
+--------------------------------------------------
+-- Pets
+--------------------------------------------------
+
+function Data.GetPets()
+
+	local result = {}
+
+	for species, pet in pairs(PetData) do
+
+		if type(pet) == "table"
+		and pet.DisplayName then
+
+			table.insert(result,{
+
+				Title = pet.DisplayName,
+
+				Badge = pet.Rarity,
+
+				Description =
+
+					("Rarity: %s\nSpawn: %s%%\nPrice: %s Sheckles\n\n%s")
+
+					:format(
+
+						Helpers.Safe(pet.Rarity),
+
+						Helpers.Safe(
+							pet.SpawnChance
+						),
+
+						Helpers.FormatNumber(
+							pet.BasePrice
+						),
+
+						GetPetDescription(
+							species,
+							pet
+						)
+
+					),
+
+				Images = {
+
+					type(pet.Image)=="string"
+					and pet.Image
+					or ""
+
+				},
+
+				Raw = pet,
+
+			})
+
+		end
+
+	end
+
+	return result
+
+end
+
+--------------------------------------------------
+-- Packs
+--------------------------------------------------
+
+function Data.GetPacks()
+
+	local result = {}
+
+	if not PackData
+	or not PackData.Data then
+
+		return result
+
+	end
+
+	for _, pack in ipairs(PackData.Data) do
+
+		table.insert(result,{
+
+			Title = Helpers.Safe(
+				pack.PackName
+			),
+
+			Badge = Helpers.Safe(
+				pack.Rarity
+			),
+
+			Description =
+
+				Helpers.Safe(
+					pack.Rarity
+				),
+
+			Images = {
+
+				type(pack.IMG)=="string"
+				and pack.IMG
+				or ""
+
+			},
+
+			Raw = pack,
+
+		})
+
+	end
+
+	return result
+
+end
+
+--------------------------------------------------
+-- All
+--------------------------------------------------
+
+function Data.GetAll()
+
+	return {
+
+		Seeds = Data.GetSeeds(),
+
+		Pets = Data.GetPets(),
+
+		Packs = Data.GetPacks(),
+
+	}
+
+end
+
+--------------------------------------------------
+
+return Data
+
+--=========================================
+--// FILE: 07_Search.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -1571,9 +1835,9 @@ end
 
 return Search
 
-=========================================
-// FILE: 08_Sort.lua
-=========================================
+--=========================================
+--// FILE: 08_Sort.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -1731,9 +1995,9 @@ end
 
 return Sort
 
-=========================================
-// FILE: 09_Filter.lua
-=========================================
+--=========================================
+--// FILE: 09_Filter.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -1903,9 +2167,9 @@ end
 
 return Filter
 
-=========================================
-// FILE: 10_Topbar.lua
-=========================================
+--=========================================
+--// FILE: 10_Topbar.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -2191,9 +2455,9 @@ end
 
 return Topbar
 
-=========================================
-// FILE: 11_ContextMenu.lua
-=========================================
+--=========================================
+--// FILE: 11_ContextMenu.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -2406,9 +2670,9 @@ end
 
 return ContextMenu
 
-=========================================
-// FILE: 12_Settings.lua
-=========================================
+--=========================================
+--// FILE: 12_Settings.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
@@ -2525,9 +2789,9 @@ end
 
 return Settings
 
-=========================================
-// FILE: 13_Animation.lua
-=========================================
+--=========================================
+--// FILE: 13_Animation.lua
+--=========================================
 
 --==================================================
 -- ModernDataUI
