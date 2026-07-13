@@ -1,0 +1,2729 @@
+
+=========================================
+// FILE: 01_Config.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 01_Config.lua
+--==================================================
+
+local Config = {}
+
+----------------------------------------------------
+-- INFORMATION
+----------------------------------------------------
+
+Config.Name = "ModernDataUI"
+Config.Version = "1.0.0"
+
+----------------------------------------------------
+-- WINDOW
+----------------------------------------------------
+
+Config.Window = {
+
+	Width = 650,
+	Height = 420,
+
+	CornerRadius = 12,
+
+	Transparency = 0.30,
+
+	Resizable = false,
+
+	Draggable = true,
+
+}
+
+----------------------------------------------------
+-- TOP BAR
+----------------------------------------------------
+
+Config.TopBar = {
+
+	Height = 40,
+
+	Title = "Data Viewer",
+
+}
+
+----------------------------------------------------
+-- TAB BAR
+----------------------------------------------------
+
+Config.Tab = {
+
+	Height = 40,
+
+	ButtonWidth = 120,
+
+	ButtonHeight = 28,
+
+	Spacing = 10,
+
+}
+
+----------------------------------------------------
+-- SEARCH
+----------------------------------------------------
+
+Config.Search = {
+
+	Enabled = true,
+
+	Placeholder = "Search...",
+
+	Height = 36,
+
+	Realtime = true,
+
+	SearchDescription = true,
+
+	IgnoreCase = true,
+
+}
+
+----------------------------------------------------
+-- CARD
+----------------------------------------------------
+
+Config.Card = {
+
+	Height = 85,
+
+	CornerRadius = 8,
+
+	ImageSize = 60,
+
+	ImageSpacing = 5,
+
+	MaxSeedImages = 3,
+
+	AutoResize = true,
+
+	ShowStroke = true,
+
+}
+
+----------------------------------------------------
+-- SCROLL
+----------------------------------------------------
+
+Config.Scroll = {
+
+	ScrollbarThickness = 4,
+
+	Padding = 6,
+
+}
+
+----------------------------------------------------
+-- ANIMATION
+----------------------------------------------------
+
+Config.Animation = {
+
+	Enabled = true,
+
+	Duration = 0.18,
+
+}
+
+----------------------------------------------------
+-- FEATURES
+----------------------------------------------------
+
+Config.Features = {
+
+	Search = true,
+
+	Sort = true,
+
+	Favorite = true,
+
+	CopyName = true,
+
+	CopyAsset = true,
+
+	ImageViewer = true,
+
+	RichText = true,
+
+}
+
+----------------------------------------------------
+-- ICONS
+----------------------------------------------------
+
+Config.Icons = {
+
+	Favorite = "★",
+
+	Search = "⌕",
+
+	Copy = "📋",
+
+	Zoom = "🔍",
+
+}
+
+----------------------------------------------------
+-- FORMATTING
+----------------------------------------------------
+
+Config.Format = {
+
+	Currency = "Sheckles",
+
+	ThousandsSeparator = ".",
+
+	TimeMinute = "m",
+
+	TimeSecond = "s",
+
+}
+
+----------------------------------------------------
+-- TABS
+----------------------------------------------------
+
+Config.Tabs = {
+
+	"Seeds",
+
+	"Pets",
+
+	"Packs",
+
+}
+
+----------------------------------------------------
+-- DEBUG
+----------------------------------------------------
+
+Config.Debug = false
+
+----------------------------------------------------
+
+return Config
+
+=========================================
+// FILE: 02_Theme.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 02_Theme.lua
+--==================================================
+
+local Theme = {}
+
+----------------------------------------------------
+-- MAIN COLORS
+----------------------------------------------------
+
+Theme.Background = Color3.fromRGB(20, 20, 25)
+
+Theme.Surface = Color3.fromRGB(30, 30, 38)
+
+Theme.SurfaceHover = Color3.fromRGB(38, 38, 48)
+
+Theme.SurfacePressed = Color3.fromRGB(45, 45, 55)
+
+----------------------------------------------------
+-- TEXT
+----------------------------------------------------
+
+Theme.Text = Color3.fromRGB(240, 240, 240)
+
+Theme.TextSecondary = Color3.fromRGB(190, 190, 190)
+
+Theme.TextDisabled = Color3.fromRGB(130, 130, 130)
+
+----------------------------------------------------
+-- ACCENT
+----------------------------------------------------
+
+Theme.Accent = Color3.fromRGB(85, 170, 255)
+
+Theme.AccentHover = Color3.fromRGB(105, 190, 255)
+
+Theme.Success = Color3.fromRGB(80, 220, 120)
+
+Theme.Warning = Color3.fromRGB(255, 190, 70)
+
+Theme.Error = Color3.fromRGB(255, 90, 90)
+
+----------------------------------------------------
+-- BORDER
+----------------------------------------------------
+
+Theme.Border = Color3.fromRGB(80, 80, 90)
+
+Theme.BorderHover = Color3.fromRGB(120, 120, 140)
+
+----------------------------------------------------
+-- TRANSPARENCY
+----------------------------------------------------
+
+Theme.Transparency = {
+
+	Window = 0.30,
+
+	Surface = 0.25,
+
+	Button = 0.20,
+
+	Hover = 0.10,
+
+	Stroke = 0.40,
+
+}
+
+----------------------------------------------------
+-- TAB
+----------------------------------------------------
+
+Theme.Tab = {
+
+	Normal = Color3.fromRGB(35, 35, 45),
+
+	Hover = Color3.fromRGB(45, 45, 60),
+
+	Selected = Color3.fromRGB(70, 100, 180),
+
+}
+
+----------------------------------------------------
+-- SEARCH
+----------------------------------------------------
+
+Theme.Search = {
+
+	Background = Color3.fromRGB(35, 35, 45),
+
+	Placeholder = Color3.fromRGB(140, 140, 150),
+
+	Text = Theme.Text,
+
+}
+
+----------------------------------------------------
+-- RARITY COLORS
+----------------------------------------------------
+
+Theme.Rarity = {
+
+	Common = Color3.fromRGB(180, 180, 180),
+
+	Uncommon = Color3.fromRGB(90, 220, 90),
+
+	Rare = Color3.fromRGB(80, 170, 255),
+
+	Epic = Color3.fromRGB(190, 80, 255),
+
+	Legendary = Color3.fromRGB(255, 180, 40),
+
+	Mythical = Color3.fromRGB(255, 70, 120),
+
+	Divine = Color3.fromRGB(255, 255, 255),
+
+	Secret = Color3.fromRGB(255, 60, 60),
+
+}
+
+----------------------------------------------------
+-- CARD
+----------------------------------------------------
+
+Theme.Card = {
+
+	Background = Theme.Surface,
+
+	Hover = Theme.SurfaceHover,
+
+	Pressed = Theme.SurfacePressed,
+
+	Border = Theme.Border,
+
+}
+
+----------------------------------------------------
+-- IMAGE
+----------------------------------------------------
+
+Theme.Image = {
+
+	Background = Color3.fromRGB(40, 40, 50),
+
+	Border = Color3.fromRGB(70, 70, 80),
+
+}
+
+----------------------------------------------------
+-- SHADOW
+----------------------------------------------------
+
+Theme.Shadow = {
+
+	Color = Color3.fromRGB(0, 0, 0),
+
+	Transparency = 0.7,
+
+}
+
+----------------------------------------------------
+
+return Theme
+
+=========================================
+// FILE: 03_Helpers.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 03_Helpers.lua
+--==================================================
+
+local Helpers = {}
+
+local TweenService = game:GetService("TweenService")
+local TextService = game:GetService("TextService")
+
+----------------------------------------------------
+-- INSTANCE
+----------------------------------------------------
+
+function Helpers.New(className, properties, parent)
+	local object = Instance.new(className)
+
+	if properties then
+		for property, value in pairs(properties) do
+			object[property] = value
+		end
+	end
+
+	if parent then
+		object.Parent = parent
+	end
+
+	return object
+end
+
+----------------------------------------------------
+-- UI
+----------------------------------------------------
+
+function Helpers.AddCorner(object, radius)
+	return Helpers.New("UICorner", {
+		CornerRadius = UDim.new(0, radius or 8)
+	}, object)
+end
+
+function Helpers.AddStroke(object, color, transparency, thickness)
+
+	return Helpers.New("UIStroke", {
+
+		Color = color,
+
+		Transparency = transparency or .4,
+
+		Thickness = thickness or 1,
+
+	}, object)
+
+end
+
+----------------------------------------------------
+-- TWEEN
+----------------------------------------------------
+
+function Helpers.Tween(object, properties, time, style, direction)
+
+	local info = TweenInfo.new(
+
+		time or .18,
+
+		style or Enum.EasingStyle.Quint,
+
+		direction or Enum.EasingDirection.Out
+
+	)
+
+	local tween = TweenService:Create(
+		object,
+		info,
+		properties
+	)
+
+	tween:Play()
+
+	return tween
+
+end
+
+----------------------------------------------------
+-- SAFE
+----------------------------------------------------
+
+function Helpers.Safe(value)
+
+	if value == nil then
+		return "?"
+	end
+
+	return tostring(value)
+
+end
+
+----------------------------------------------------
+-- CONTAINS
+----------------------------------------------------
+
+function Helpers.Contains(text, keyword)
+
+	text = tostring(text):lower()
+	keyword = tostring(keyword):lower()
+
+	return string.find(text, keyword, 1, true) ~= nil
+
+end
+
+----------------------------------------------------
+-- FORMAT NUMBER
+----------------------------------------------------
+
+function Helpers.FormatNumber(number)
+
+	number = math.floor(tonumber(number) or 0)
+
+	local sign = ""
+
+	if number < 0 then
+		sign = "-"
+		number = -number
+	end
+
+	local result = tostring(number)
+
+	while true do
+
+		local formatted, count = result:gsub(
+			"^(%-?%d+)(%d%d%d)",
+			"%1.%2"
+		)
+
+		result = formatted
+
+		if count == 0 then
+			break
+		end
+
+	end
+
+	return sign .. result
+
+end
+
+----------------------------------------------------
+-- FORMAT TIME
+----------------------------------------------------
+
+function Helpers.FormatTime(seconds)
+
+	seconds = tonumber(seconds)
+
+	if not seconds then
+		return "?"
+	end
+
+	local minute = math.floor(seconds / 60)
+
+	local remain = seconds % 60
+
+	if minute > 0 then
+
+		return string.format(
+			"%dm %ds",
+			minute,
+			remain
+		)
+
+	end
+
+	return string.format(
+		"%ds",
+		remain
+	)
+
+end
+
+----------------------------------------------------
+-- TEXT HEIGHT
+----------------------------------------------------
+
+function Helpers.GetTextHeight(
+
+	text,
+
+	width,
+
+	font,
+
+	size
+
+)
+
+	local bounds = TextService:GetTextSize(
+
+		tostring(text),
+
+		size,
+
+		font,
+
+		Vector2.new(width, math.huge)
+
+	)
+
+	return bounds.Y
+
+end
+
+----------------------------------------------------
+-- IMAGE CACHE
+----------------------------------------------------
+
+local Cache = {}
+
+function Helpers.GetImage(folder, name)
+
+	local key = folder.Name .. ":" .. name
+
+	if Cache[key] ~= nil then
+		return Cache[key]
+	end
+
+	local object = folder:FindFirstChild(name)
+
+	local image = ""
+
+	if object and object:IsA("StringValue") then
+		image = object.Value
+	end
+
+	Cache[key] = image
+
+	return image
+
+end
+
+function Helpers.GetSeedImages(
+
+	seedName,
+
+	seedFolder,
+
+	plantFolder,
+
+	fruitFolder
+
+)
+
+	return {
+
+		Helpers.GetImage(seedFolder, seedName),
+
+		Helpers.GetImage(plantFolder, seedName),
+
+		Helpers.GetImage(fruitFolder, seedName),
+
+	}
+
+end
+
+----------------------------------------------------
+-- DESTROY
+----------------------------------------------------
+
+function Helpers.SafeDestroy(object)
+
+	if object then
+		object:Destroy()
+	end
+
+end
+
+----------------------------------------------------
+-- CLAMP
+----------------------------------------------------
+
+function Helpers.Clamp(value, min, max)
+
+	return math.max(
+		min,
+		math.min(
+			max,
+			value
+		)
+	)
+
+end
+
+----------------------------------------------------
+-- ROUND
+----------------------------------------------------
+
+function Helpers.Round(number)
+
+	return math.floor(number + .5)
+
+end
+
+----------------------------------------------------
+-- DEEP COPY
+----------------------------------------------------
+
+function Helpers.DeepCopy(tbl)
+
+	local new = {}
+
+	for key, value in pairs(tbl) do
+
+		if type(value) == "table" then
+			new[key] = Helpers.DeepCopy(value)
+		else
+			new[key] = value
+		end
+
+	end
+
+	return new
+
+end
+
+----------------------------------------------------
+
+return Helpers
+
+=========================================
+// FILE: 04_UI.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 04_UI.lua
+--==================================================
+
+local UI = {}
+
+local Config = require(script.Parent["01_Config"])
+local Theme = require(script.Parent["02_Theme"])
+local Helpers = require(script.Parent["03_Helpers"])
+
+local New = Helpers.New
+local AddCorner = Helpers.AddCorner
+local AddStroke = Helpers.AddStroke
+local Tween = Helpers.Tween
+
+--------------------------------------------------
+-- PRIVATE
+--------------------------------------------------
+
+local Gui
+local Main
+local TopBar
+local Title
+local TabBar
+local SearchFrame
+local SearchBox
+local Content
+
+local Pages = {}
+
+local CurrentPage
+
+--------------------------------------------------
+-- CREATE PAGE
+--------------------------------------------------
+
+local function CreatePage(name)
+
+	local scroll = New("ScrollingFrame",{
+
+		Name = name,
+
+		Size = UDim2.fromScale(1,1),
+
+		BackgroundTransparency = 1,
+
+		BorderSizePixel = 0,
+
+		ScrollBarThickness = Config.Scroll.ScrollbarThickness,
+
+		CanvasSize = UDim2.new(),
+
+		Visible = false,
+
+	},Content)
+
+	local layout = New("UIListLayout",{
+
+		Padding = UDim.new(0,Config.Scroll.Padding),
+
+	},scroll)
+
+	layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+
+		scroll.CanvasSize=UDim2.fromOffset(
+			0,
+			layout.AbsoluteContentSize.Y+10
+		)
+
+	end)
+
+	Pages[name]=scroll
+
+	return scroll
+
+end
+
+--------------------------------------------------
+-- SWITCH PAGE
+--------------------------------------------------
+
+function UI.SwitchPage(name)
+
+	if CurrentPage==name then
+		return
+	end
+
+	for _,page in pairs(Pages) do
+		page.Visible=false
+	end
+
+	if Pages[name] then
+
+		Pages[name].Visible=true
+
+		CurrentPage=name
+
+	end
+
+end
+
+--------------------------------------------------
+-- CREATE TAB
+--------------------------------------------------
+
+local function CreateTab(name)
+
+	local button=New("TextButton",{
+
+		Name=name,
+
+		Size=UDim2.fromOffset(
+			Config.Tab.ButtonWidth,
+			Config.Tab.ButtonHeight
+		),
+
+		Text=name,
+
+		BackgroundColor3=Theme.Tab.Normal,
+
+		BackgroundTransparency=.2,
+
+		TextColor3=Theme.Text,
+
+		Font=Enum.Font.Gotham,
+
+		TextSize=13,
+
+	},TabBar)
+
+	AddCorner(button,6)
+
+	button.MouseEnter:Connect(function()
+
+		Tween(button,{
+			BackgroundColor3=Theme.Tab.Hover
+		})
+
+	end)
+
+	button.MouseLeave:Connect(function()
+
+		Tween(button,{
+			BackgroundColor3=Theme.Tab.Normal
+		})
+
+	end)
+
+	button.MouseButton1Click:Connect(function()
+
+		UI.SwitchPage(name)
+
+	end)
+
+end
+
+--------------------------------------------------
+-- DRAG
+--------------------------------------------------
+
+local function EnableDrag()
+
+	if not Config.Window.Draggable then
+		return
+	end
+
+	local UIS=game:GetService("UserInputService")
+
+	local dragging=false
+	local dragStart
+	local startPos
+
+	TopBar.InputBegan:Connect(function(input)
+
+		if input.UserInputType==Enum.UserInputType.MouseButton1
+		or input.UserInputType==Enum.UserInputType.Touch then
+
+			dragging=true
+
+			dragStart=input.Position
+
+			startPos=Main.Position
+
+			local conn
+
+			conn=input.Changed:Connect(function()
+
+				if input.UserInputState==Enum.UserInputState.End then
+
+					dragging=false
+
+					conn:Disconnect()
+
+				end
+
+			end)
+
+		end
+
+	end)
+
+	UIS.InputChanged:Connect(function(input)
+
+		if not dragging then
+			return
+		end
+
+		if input.UserInputType~=Enum.UserInputType.MouseMovement
+		and input.UserInputType~=Enum.UserInputType.Touch then
+			return
+		end
+
+		local delta=input.Position-dragStart
+
+		Main.Position=UDim2.new(
+
+			startPos.X.Scale,
+			startPos.X.Offset+delta.X,
+
+			startPos.Y.Scale,
+			startPos.Y.Offset+delta.Y
+
+		)
+
+	end)
+
+end
+
+--------------------------------------------------
+-- INIT
+--------------------------------------------------
+
+function UI.Init()
+
+	Gui=New("ScreenGui",{
+
+		Name=Config.Name,
+
+		ResetOnSpawn=false,
+
+	},gethui and gethui() or game.CoreGui)
+
+	Main=New("Frame",{
+
+		Size=UDim2.fromOffset(
+			Config.Window.Width,
+			Config.Window.Height
+		),
+
+		AnchorPoint=Vector2.new(.5,.5),
+
+		Position=UDim2.fromScale(.5,.5),
+
+		BackgroundColor3=Theme.Background,
+
+		BackgroundTransparency=
+			Config.Window.Transparency,
+
+		BorderSizePixel=0,
+
+	},Gui)
+
+	AddCorner(Main,Config.Window.CornerRadius)
+	AddStroke(Main,Theme.Border,.6)
+
+	TopBar=New("Frame",{
+
+		Size=UDim2.new(1,0,0,Config.TopBar.Height),
+
+		BackgroundTransparency=1,
+
+	},Main)
+
+	Title=New("TextLabel",{
+
+		Size=UDim2.new(1,-20,1,0),
+
+		Position=UDim2.fromOffset(10,0),
+
+		BackgroundTransparency=1,
+
+		Text=Config.TopBar.Title,
+
+		TextColor3=Theme.Text,
+
+		TextSize=16,
+
+		Font=Enum.Font.GothamBold,
+
+		TextXAlignment=Enum.TextXAlignment.Left,
+
+	},TopBar)
+
+	TabBar=New("Frame",{
+
+		Size=UDim2.new(1,0,0,40),
+
+		Position=UDim2.fromOffset(0,40),
+
+		BackgroundTransparency=1,
+
+	},Main)
+
+	New("UIListLayout",{
+
+		FillDirection=Enum.FillDirection.Horizontal,
+
+		Padding=UDim.new(0,Config.Tab.Spacing),
+
+	},TabBar)
+
+	New("UIPadding",{
+
+		PaddingLeft=UDim.new(0,10),
+
+		PaddingTop=UDim.new(0,6),
+
+	},TabBar)
+
+	SearchFrame=New("Frame",{
+
+		Size=UDim2.new(1,-20,0,Config.Search.Height),
+
+		Position=UDim2.fromOffset(10,82),
+
+		BackgroundColor3=Theme.Search.Background,
+
+		BackgroundTransparency=.15,
+
+		BorderSizePixel=0,
+
+	},Main)
+
+	AddCorner(SearchFrame,8)
+	AddStroke(SearchFrame)
+
+	SearchBox=New("TextBox",{
+
+		Size=UDim2.new(1,-20,1,0),
+
+		Position=UDim2.fromOffset(10,0),
+
+		BackgroundTransparency=1,
+
+		PlaceholderText=Config.Search.Placeholder,
+
+		ClearTextOnFocus=false,
+
+		Text="",
+
+		TextColor3=Theme.Text,
+
+		PlaceholderColor3=Theme.TextSecondary,
+
+		TextXAlignment=Enum.TextXAlignment.Left,
+
+		Font=Enum.Font.Gotham,
+
+		TextSize=14,
+
+	},SearchFrame)
+
+	Content=New("Frame",{
+
+		Size=UDim2.new(1,0,1,-120),
+
+		Position=UDim2.fromOffset(0,120),
+
+		BackgroundTransparency=1,
+
+	},Main)
+
+	for _,tab in ipairs(Config.Tabs) do
+
+		CreateTab(tab)
+
+		CreatePage(tab)
+
+	end
+
+	UI.SwitchPage(Config.Tabs[1])
+
+	EnableDrag()
+
+end
+
+--------------------------------------------------
+-- GETTERS
+--------------------------------------------------
+
+function UI.GetPages()
+	return Pages
+end
+
+function UI.GetSearchBox()
+	return SearchBox
+end
+
+function UI.GetCurrentPage()
+	return CurrentPage
+end
+
+function UI.GetMain()
+	return Main
+end
+
+return UI
+
+=========================================
+// FILE: 05_Card.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 05_Card.lua
+--==================================================
+
+local Card = {}
+
+local Helpers = require(script.Parent["03_Helpers"])
+local Theme = require(script.Parent["02_Theme"])
+local Config = require(script.Parent["01_Config"])
+
+local New = Helpers.New
+local AddCorner = Helpers.AddCorner
+local AddStroke = Helpers.AddStroke
+local Tween = Helpers.Tween
+
+--------------------------------------------------
+-- Registry
+--------------------------------------------------
+
+Card.Registry = {}
+
+--------------------------------------------------
+-- Private
+--------------------------------------------------
+
+local function Register(page,item)
+
+	Card.Registry[page] = Card.Registry[page] or {}
+
+	table.insert(Card.Registry[page],item)
+
+end
+
+--------------------------------------------------
+-- Hover
+--------------------------------------------------
+
+local function EnableHover(frame)
+
+	frame.MouseEnter:Connect(function()
+
+		Tween(frame,{
+			BackgroundColor3 = Theme.Card.Hover
+		})
+
+	end)
+
+	frame.MouseLeave:Connect(function()
+
+		Tween(frame,{
+			BackgroundColor3 = Theme.Card.Background
+		})
+
+	end)
+
+end
+
+--------------------------------------------------
+-- Create
+--------------------------------------------------
+
+function Card.Create(page,parent,data)
+
+	local textHeight = Helpers.GetTextHeight(
+
+		data.Description,
+
+		540,
+
+		Enum.Font.Gotham,
+
+		12
+
+	)
+
+	local height = math.max(
+
+		Config.Card.Height,
+
+		textHeight + 52
+
+	)
+
+	local frame = New("Frame",{
+
+		Size = UDim2.new(
+			1,
+			-10,
+			0,
+			height
+		),
+
+		BackgroundColor3 = Theme.Card.Background,
+
+		BackgroundTransparency =
+			Theme.Transparency.Surface,
+
+		BorderSizePixel = 0,
+
+	},parent)
+
+	AddCorner(frame,Config.Card.CornerRadius)
+
+	AddStroke(frame)
+
+	EnableHover(frame)
+
+	------------------------------------------------
+	-- Images
+	------------------------------------------------
+
+	local imageHolder = New("Frame",{
+
+		Size = UDim2.fromOffset(
+
+			200,
+
+			Config.Card.ImageSize
+
+		),
+
+		Position = UDim2.fromOffset(10,12),
+
+		BackgroundTransparency = 1,
+
+	},frame)
+
+	for i,image in ipairs(data.Images or {}) do
+
+		New("ImageLabel",{
+
+			Size = UDim2.fromOffset(
+
+				Config.Card.ImageSize,
+
+				Config.Card.ImageSize
+
+			),
+
+			Position = UDim2.fromOffset(
+
+				(i-1) *
+
+				(Config.Card.ImageSize+
+
+				Config.Card.ImageSpacing),
+
+				0
+
+			),
+
+			Image = image,
+
+			BackgroundTransparency = 1,
+
+			ScaleType = Enum.ScaleType.Fit,
+
+		},imageHolder)
+
+	end
+
+	------------------------------------------------
+	-- Title
+	------------------------------------------------
+
+	local title = New("TextLabel",{
+
+		Size = UDim2.new(
+
+			1,
+
+			-230,
+
+			0,
+
+			25
+
+		),
+
+		Position = UDim2.fromOffset(220,8),
+
+		BackgroundTransparency = 1,
+
+		Text = data.Title,
+
+		Font = Enum.Font.GothamBold,
+
+		TextColor3 = Theme.Text,
+
+		TextSize = 14,
+
+		TextXAlignment = Enum.TextXAlignment.Left,
+
+	},frame)
+
+	------------------------------------------------
+	-- Badge
+	------------------------------------------------
+
+	if data.Badge then
+
+		New("TextLabel",{
+
+			AnchorPoint = Vector2.new(1,0),
+
+			Position = UDim2.new(
+
+				1,
+
+				-10,
+
+				0,
+
+				10
+
+			),
+
+			AutomaticSize =
+				Enum.AutomaticSize.XY,
+
+			Text = data.Badge,
+
+			Font = Enum.Font.GothamBold,
+
+			TextSize = 11,
+
+			TextColor3 = Theme.Text,
+
+			BackgroundColor3 =
+				data.BadgeColor
+				or Theme.Accent,
+
+			BackgroundTransparency = .15,
+
+		},frame)
+
+	end
+
+	------------------------------------------------
+	-- Description
+	------------------------------------------------
+
+	local desc = New("TextLabel",{
+
+		Size = UDim2.new(
+
+			1,
+
+			-230,
+
+			0,
+
+			textHeight+10
+
+		),
+
+		Position = UDim2.fromOffset(220,30),
+
+		BackgroundTransparency = 1,
+
+		Text = data.Description,
+
+		RichText = true,
+
+		TextWrapped = true,
+
+		TextXAlignment =
+			Enum.TextXAlignment.Left,
+
+		TextYAlignment =
+			Enum.TextYAlignment.Top,
+
+		TextColor3 =
+			Theme.TextSecondary,
+
+		Font = Enum.Font.Gotham,
+
+		TextSize = 12,
+
+	},frame)
+
+	------------------------------------------------
+	-- Store
+	------------------------------------------------
+
+	local object = {
+
+		Page = page,
+
+		Frame = frame,
+
+		Title = data.Title,
+
+		Description = data.Description,
+
+		Images = data.Images,
+
+		Data = data,
+
+	}
+
+	Register(page,object)
+
+	return object
+
+end
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
+function Card.GetRegistry()
+
+	return Card.Registry
+
+end
+
+return Card
+
+=========================================
+// FILE: 07_Search.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 07_Search.lua
+--==================================================
+
+local Search = {}
+
+--------------------------------------------------
+-- Helpers
+--------------------------------------------------
+
+local function Normalize(text)
+
+	return string.lower(tostring(text or ""))
+
+end
+
+local function SplitWords(text)
+
+	local words = {}
+
+	for word in Normalize(text):gmatch("%S+") do
+		table.insert(words, word)
+	end
+
+	return words
+
+end
+
+--------------------------------------------------
+-- Match
+--------------------------------------------------
+
+local function Match(item, words)
+
+	local title = Normalize(item.Title)
+	local desc = Normalize(item.Description)
+	local badge = Normalize(item.Badge)
+
+	for _, word in ipairs(words) do
+
+		if not (
+			title:find(word, 1, true)
+			or desc:find(word, 1, true)
+			or badge:find(word, 1, true)
+		) then
+			return false
+		end
+
+	end
+
+	return true
+
+end
+
+--------------------------------------------------
+-- Filter
+--------------------------------------------------
+
+function Search.Filter(registry, query)
+
+	query = Normalize(query)
+
+	if query == "" then
+
+		for _, card in ipairs(registry) do
+			card.Frame.Visible = true
+		end
+
+		return
+
+	end
+
+	local words = SplitWords(query)
+
+	for _, card in ipairs(registry) do
+
+		card.Frame.Visible = Match(card, words)
+
+	end
+
+end
+
+--------------------------------------------------
+-- Multi Page
+--------------------------------------------------
+
+function Search.FilterAll(registries, query)
+
+	for _, registry in pairs(registries) do
+
+		Search.Filter(registry, query)
+
+	end
+
+end
+
+--------------------------------------------------
+-- Count
+--------------------------------------------------
+
+function Search.Count(registry)
+
+	local visible = 0
+
+	for _, card in ipairs(registry) do
+
+		if card.Frame.Visible then
+			visible += 1
+		end
+
+	end
+
+	return visible
+
+end
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
+return Search
+
+=========================================
+// FILE: 08_Sort.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 08_Sort.lua
+--==================================================
+
+local Sort = {}
+
+--------------------------------------------------
+-- Helpers
+--------------------------------------------------
+
+local function Safe(v)
+	return v == nil and 0 or v
+end
+
+local function Asc(a, b)
+	return a < b
+end
+
+local function Desc(a, b)
+	return a > b
+end
+
+--------------------------------------------------
+-- Internal
+--------------------------------------------------
+
+local function Apply(registry, compare)
+
+	local list = table.clone(registry)
+
+	table.sort(list, compare)
+
+	for index, card in ipairs(list) do
+		card.Frame.LayoutOrder = index
+	end
+
+end
+
+--------------------------------------------------
+-- Generic
+--------------------------------------------------
+
+function Sort.By(registry, getter, descending)
+
+	local cmp = descending and Desc or Asc
+
+	Apply(registry,function(a,b)
+
+		local av = Safe(getter(a))
+		local bv = Safe(getter(b))
+
+		if av == bv then
+			return a.Title < b.Title
+		end
+
+		return cmp(av,bv)
+
+	end)
+
+end
+
+--------------------------------------------------
+-- Ready-made
+--------------------------------------------------
+
+function Sort.TitleAZ(registry)
+
+	Sort.By(registry,function(card)
+		return string.lower(card.Title)
+	end,false)
+
+end
+
+function Sort.TitleZA(registry)
+
+	Sort.By(registry,function(card)
+		return string.lower(card.Title)
+	end,true)
+
+end
+
+function Sort.PriceLow(registry)
+
+	Sort.By(registry,function(card)
+
+		return card.Data.Raw.BasePrice
+			or card.Data.Raw.PurchasePrice
+			or 0
+
+	end,false)
+
+end
+
+function Sort.PriceHigh(registry)
+
+	Sort.By(registry,function(card)
+
+		return card.Data.Raw.BasePrice
+			or card.Data.Raw.PurchasePrice
+			or 0
+
+	end,true)
+
+end
+
+function Sort.SpawnLow(registry)
+
+	Sort.By(registry,function(card)
+
+		return card.Data.Raw.SpawnChance
+			or 0
+
+	end,false)
+
+end
+
+function Sort.SpawnHigh(registry)
+
+	Sort.By(registry,function(card)
+
+		return card.Data.Raw.SpawnChance
+			or 0
+
+	end,true)
+
+end
+
+function Sort.GrowLow(registry)
+
+	Sort.By(registry,function(card)
+
+		return card.Data.Raw.PrimeTime
+			or 0
+
+	end,false)
+
+end
+
+function Sort.GrowHigh(registry)
+
+	Sort.By(registry,function(card)
+
+		return card.Data.Raw.PrimeTime
+			or 0
+
+	end,true)
+
+end
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
+return Sort
+
+=========================================
+// FILE: 09_Filter.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 09_Filter.lua
+--==================================================
+
+local Filter = {}
+
+--------------------------------------------------
+-- Active Filters
+--------------------------------------------------
+
+Filter.State = {}
+
+--------------------------------------------------
+-- Helpers
+--------------------------------------------------
+
+local function Between(value,min,max)
+
+	if min and value < min then
+		return false
+	end
+
+	if max and value > max then
+		return false
+	end
+
+	return true
+
+end
+
+--------------------------------------------------
+-- Match
+--------------------------------------------------
+
+local function Match(card,filter)
+
+	local raw = card.Data.Raw
+
+	------------------------------------------------
+	-- Rarity
+	------------------------------------------------
+
+	if filter.Rarity then
+
+		local rarity =
+			raw.Rarity or ""
+
+		if rarity ~= filter.Rarity then
+			return false
+		end
+
+	end
+
+	------------------------------------------------
+	-- Price
+	------------------------------------------------
+
+	local price =
+		raw.BasePrice
+		or raw.PurchasePrice
+		or 0
+
+	if not Between(
+		price,
+		filter.PriceMin,
+		filter.PriceMax
+	) then
+		return false
+	end
+
+	------------------------------------------------
+	-- Spawn Chance
+	------------------------------------------------
+
+	if raw.SpawnChance then
+
+		if not Between(
+			raw.SpawnChance,
+			filter.SpawnMin,
+			filter.SpawnMax
+		) then
+			return false
+		end
+
+	end
+
+	------------------------------------------------
+	-- Grow Time
+	------------------------------------------------
+
+	if raw.PrimeTime then
+
+		if not Between(
+			raw.PrimeTime,
+			filter.GrowMin,
+			filter.GrowMax
+		) then
+			return false
+		end
+
+	end
+
+	return true
+
+end
+
+--------------------------------------------------
+-- Apply
+--------------------------------------------------
+
+function Filter.Apply(registry,options)
+
+	options = options or {}
+
+	for _,card in ipairs(registry) do
+
+		card.Frame.Visible =
+			Match(card,options)
+
+	end
+
+	Filter.State = options
+
+end
+
+--------------------------------------------------
+-- Reset
+--------------------------------------------------
+
+function Filter.Clear(registry)
+
+	for _,card in ipairs(registry) do
+
+		card.Frame.Visible = true
+
+	end
+
+	table.clear(Filter.State)
+
+end
+
+--------------------------------------------------
+-- Count
+--------------------------------------------------
+
+function Filter.Count(registry)
+
+	local total = 0
+
+	for _,card in ipairs(registry) do
+
+		if card.Frame.Visible then
+			total += 1
+		end
+
+	end
+
+	return total
+
+end
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
+return Filter
+
+=========================================
+// FILE: 10_Topbar.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 10_Topbar.lua
+--==================================================
+
+local Topbar = {}
+
+local Helpers = require(script.Parent["03_Helpers"])
+local Theme = require(script.Parent["02_Theme"])
+local Config = require(script.Parent["01_Config"])
+
+local New = Helpers.New
+local AddCorner = Helpers.AddCorner
+local AddStroke = Helpers.AddStroke
+
+--------------------------------------------------
+-- Signals
+--------------------------------------------------
+
+Topbar.Events = {
+
+    SearchChanged = Instance.new("BindableEvent"),
+
+    SortChanged = Instance.new("BindableEvent"),
+
+    FilterChanged = Instance.new("BindableEvent"),
+
+    Refresh = Instance.new("BindableEvent"),
+
+    Settings = Instance.new("BindableEvent"),
+
+}
+
+--------------------------------------------------
+-- Create
+--------------------------------------------------
+
+function Topbar.Create(parent)
+
+    local bar = New("Frame",{
+
+        Size = UDim2.new(1,-20,0,36),
+
+        Position = UDim2.fromOffset(10,2),
+
+        BackgroundTransparency = 1,
+
+    },parent)
+
+    ------------------------------------------------
+    -- Search
+    ------------------------------------------------
+
+    local search = New("TextBox",{
+
+        Size = UDim2.fromOffset(220,28),
+
+        Position = UDim2.fromOffset(0,4),
+
+        PlaceholderText = "Search...",
+
+        ClearTextOnFocus = false,
+
+        Font = Enum.Font.Gotham,
+
+        TextSize = 13,
+
+        Text = "",
+
+        BackgroundColor3 = Theme.Card.Background,
+
+        BackgroundTransparency = .15,
+
+        TextColor3 = Theme.Text,
+
+        PlaceholderColor3 = Theme.TextSecondary,
+
+    },bar)
+
+    AddCorner(search,6)
+    AddStroke(search)
+
+    search:GetPropertyChangedSignal("Text"):Connect(function()
+
+        Topbar.Events.SearchChanged:Fire(search.Text)
+
+    end)
+
+    ------------------------------------------------
+    -- Sort
+    ------------------------------------------------
+
+    local sort = New("TextButton",{
+
+        Size = UDim2.fromOffset(90,28),
+
+        Position = UDim2.fromOffset(235,4),
+
+        Text = "Sort",
+
+        Font = Enum.Font.Gotham,
+
+        TextSize = 13,
+
+        BackgroundColor3 = Theme.Card.Background,
+
+        BackgroundTransparency = .15,
+
+        TextColor3 = Theme.Text,
+
+    },bar)
+
+    AddCorner(sort,6)
+    AddStroke(sort)
+
+    sort.MouseButton1Click:Connect(function()
+
+        Topbar.Events.SortChanged:Fire()
+
+    end)
+
+    ------------------------------------------------
+    -- Filter
+    ------------------------------------------------
+
+    local filter = New("TextButton",{
+
+        Size = UDim2.fromOffset(90,28),
+
+        Position = UDim2.fromOffset(330,4),
+
+        Text = "Filter",
+
+        Font = Enum.Font.Gotham,
+
+        TextSize = 13,
+
+        BackgroundColor3 = Theme.Card.Background,
+
+        BackgroundTransparency = .15,
+
+        TextColor3 = Theme.Text,
+
+    },bar)
+
+    AddCorner(filter,6)
+    AddStroke(filter)
+
+    filter.MouseButton1Click:Connect(function()
+
+        Topbar.Events.FilterChanged:Fire()
+
+    end)
+
+    ------------------------------------------------
+    -- Refresh
+    ------------------------------------------------
+
+    local refresh = New("TextButton",{
+
+        Size = UDim2.fromOffset(34,28),
+
+        AnchorPoint = Vector2.new(1,0),
+
+        Position = UDim2.new(1,-90,0,4),
+
+        Text = "⟳",
+
+        Font = Enum.Font.GothamBold,
+
+        TextSize = 14,
+
+        BackgroundColor3 = Theme.Card.Background,
+
+        BackgroundTransparency = .15,
+
+        TextColor3 = Theme.Text,
+
+    },bar)
+
+    AddCorner(refresh,6)
+    AddStroke(refresh)
+
+    refresh.MouseButton1Click:Connect(function()
+
+        Topbar.Events.Refresh:Fire()
+
+    end)
+
+    ------------------------------------------------
+    -- Settings
+    ------------------------------------------------
+
+    local settings = New("TextButton",{
+
+        Size = UDim2.fromOffset(34,28),
+
+        AnchorPoint = Vector2.new(1,0),
+
+        Position = UDim2.new(1,-50,0,4),
+
+        Text = "⚙",
+
+        Font = Enum.Font.GothamBold,
+
+        TextSize = 14,
+
+        BackgroundColor3 = Theme.Card.Background,
+
+        BackgroundTransparency = .15,
+
+        TextColor3 = Theme.Text,
+
+    },bar)
+
+    AddCorner(settings,6)
+    AddStroke(settings)
+
+    settings.MouseButton1Click:Connect(function()
+
+        Topbar.Events.Settings:Fire()
+
+    end)
+
+    ------------------------------------------------
+    -- Counter
+    ------------------------------------------------
+
+    local counter = New("TextLabel",{
+
+        AnchorPoint = Vector2.new(1,0),
+
+        Position = UDim2.new(1,-140,0,7),
+
+        Size = UDim2.fromOffset(120,20),
+
+        BackgroundTransparency = 1,
+
+        Font = Enum.Font.Gotham,
+
+        TextSize = 12,
+
+        TextColor3 = Theme.TextSecondary,
+
+        TextXAlignment = Enum.TextXAlignment.Right,
+
+        Text = "0 / 0",
+
+    },bar)
+
+    ------------------------------------------------
+    -- API
+    ------------------------------------------------
+
+    function Topbar.SetCounter(visible,total)
+
+        counter.Text = string.format(
+
+            "%d / %d Items",
+
+            visible,
+
+            total
+
+        )
+
+    end
+
+    function Topbar.GetSearch()
+
+        return search.Text
+
+    end
+
+    return bar
+
+end
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
+return Topbar
+
+=========================================
+// FILE: 11_ContextMenu.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 11_ContextMenu.lua
+--==================================================
+
+local ContextMenu = {}
+
+local Helpers = require(script.Parent["03_Helpers"])
+local Theme = require(script.Parent["02_Theme"])
+
+local New = Helpers.New
+local AddCorner = Helpers.AddCorner
+local AddStroke = Helpers.AddStroke
+
+--------------------------------------------------
+-- State
+--------------------------------------------------
+
+local Menu
+local Layout
+
+--------------------------------------------------
+-- Hide
+--------------------------------------------------
+
+function ContextMenu.Hide()
+
+	if Menu then
+		Menu.Visible = false
+	end
+
+end
+
+--------------------------------------------------
+-- Init
+--------------------------------------------------
+
+function ContextMenu.Init(parent)
+
+	Menu = New("Frame",{
+		Size = UDim2.fromOffset(170,0),
+		AutomaticSize = Enum.AutomaticSize.Y,
+		Visible = false,
+		ZIndex = 100,
+
+		BackgroundColor3 = Theme.Card.Background,
+		BackgroundTransparency = .05,
+
+	},parent)
+
+	AddCorner(Menu,8)
+	AddStroke(Menu)
+
+	Layout = New("UIListLayout",{
+		Padding = UDim.new(0,2)
+	},Menu)
+
+	return Menu
+
+end
+
+--------------------------------------------------
+-- Button
+--------------------------------------------------
+
+local function AddButton(text,callback)
+
+	local button = New("TextButton",{
+
+		Size = UDim2.new(1,-8,0,28),
+
+		Position = UDim2.fromOffset(4,0),
+
+		Text = text,
+
+		BackgroundTransparency = 1,
+
+		TextColor3 = Theme.Text,
+
+		Font = Enum.Font.Gotham,
+
+		TextSize = 13,
+
+		ZIndex = 101,
+
+	})
+
+	button.Parent = Menu
+
+	button.MouseButton1Click:Connect(function()
+
+		ContextMenu.Hide()
+
+		if callback then
+			callback()
+		end
+
+	end)
+
+	button.MouseEnter:Connect(function()
+
+		button.BackgroundTransparency = .85
+
+	end)
+
+	button.MouseLeave:Connect(function()
+
+		button.BackgroundTransparency = 1
+
+	end)
+
+end
+
+--------------------------------------------------
+-- Show
+--------------------------------------------------
+
+function ContextMenu.Show(position,card)
+
+	if not Menu then
+		return
+	end
+
+	Menu:ClearAllChildren()
+
+	Layout.Parent = Menu
+
+	Menu.Position = UDim2.fromOffset(
+		position.X,
+		position.Y
+	)
+
+	------------------------------------------------
+
+	AddButton("Copy Name",function()
+
+		if setclipboard then
+			setclipboard(card.Title)
+		end
+
+	end)
+
+	------------------------------------------------
+
+	AddButton("Copy Description",function()
+
+		if setclipboard then
+			setclipboard(card.Description)
+		end
+
+	end)
+
+	------------------------------------------------
+
+	if card.Images
+	and card.Images[1]
+	and card.Images[1] ~= "" then
+
+		AddButton("Copy Image",function()
+
+			if setclipboard then
+				setclipboard(card.Images[1])
+			end
+
+		end)
+
+	end
+
+	------------------------------------------------
+
+	AddButton("Print Raw",function()
+
+		print(card.Data.Raw)
+
+	end)
+
+	------------------------------------------------
+
+	Menu.Visible = true
+
+end
+
+--------------------------------------------------
+-- Bind
+--------------------------------------------------
+
+function ContextMenu.Bind(frame,card)
+
+	frame.InputBegan:Connect(function(input)
+
+		if input.UserInputType
+			== Enum.UserInputType.MouseButton2 then
+
+			ContextMenu.Show(
+
+				input.Position,
+
+				card
+
+			)
+
+		end
+
+	end)
+
+end
+
+--------------------------------------------------
+
+return ContextMenu
+
+=========================================
+// FILE: 12_Settings.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 12_Settings.lua
+--==================================================
+
+local Settings = {}
+
+--------------------------------------------------
+-- Default
+--------------------------------------------------
+
+Settings.Data = {
+
+	Theme = "Dark",
+
+	DefaultTab = "Seeds",
+
+	SearchText = "",
+
+	SortMode = "TitleAZ",
+
+	ShowDescriptions = true,
+
+	ShowBadges = true,
+
+	ShowImages = true,
+
+	Animations = true,
+
+}
+
+--------------------------------------------------
+-- Events
+--------------------------------------------------
+
+Settings.Changed = Instance.new("BindableEvent")
+
+--------------------------------------------------
+-- Get
+--------------------------------------------------
+
+function Settings.Get(key)
+
+	return Settings.Data[key]
+
+end
+
+--------------------------------------------------
+-- Set
+--------------------------------------------------
+
+function Settings.Set(key,value)
+
+	if Settings.Data[key] == value then
+		return
+	end
+
+	Settings.Data[key] = value
+
+	Settings.Changed:Fire(key,value)
+
+end
+
+--------------------------------------------------
+-- Toggle
+--------------------------------------------------
+
+function Settings.Toggle(key)
+
+	local value = not Settings.Data[key]
+
+	Settings.Set(key,value)
+
+	return value
+
+end
+
+--------------------------------------------------
+-- Reset
+--------------------------------------------------
+
+function Settings.Reset()
+
+	table.clear(Settings.Data)
+
+	Settings.Data = {
+
+		Theme = "Dark",
+
+		DefaultTab = "Seeds",
+
+		SearchText = "",
+
+		SortMode = "TitleAZ",
+
+		ShowDescriptions = true,
+
+		ShowBadges = true,
+
+		ShowImages = true,
+
+		Animations = true,
+
+	}
+
+	Settings.Changed:Fire("Reset")
+
+end
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
+return Settings
+
+=========================================
+// FILE: 13_Animation.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 13_Animation.lua
+--==================================================
+
+local TweenService = game:GetService("TweenService")
+
+local Animation = {}
+
+local DEFAULT = TweenInfo.new(
+	0.18,
+	Enum.EasingStyle.Quad,
+	Enum.EasingDirection.Out
+)
+
+--------------------------------------------------
+-- Generic Tween
+--------------------------------------------------
+
+function Animation.Tween(instance, properties, info)
+
+	return TweenService
+		:Create(instance, info or DEFAULT, properties)
+
+end
+
+--------------------------------------------------
+-- Play
+--------------------------------------------------
+
+function Animation.Play(instance, properties, info)
+
+	local tween = Animation.Tween(instance, properties, info)
+
+	tween:Play()
+
+	return tween
+
+end
+
+--------------------------------------------------
+-- Fade
+--------------------------------------------------
+
+function Animation.FadeIn(gui)
+
+	gui.Visible = true
+
+	Animation.Play(gui,{
+		BackgroundTransparency = 0.3
+	})
+
+end
+
+function Animation.FadeOut(gui)
+
+	local tween = Animation.Play(gui,{
+		BackgroundTransparency = 1
+	})
+
+	tween.Completed:Connect(function()
+		gui.Visible = false
+	end)
+
+end
+
+--------------------------------------------------
+-- Scale
+--------------------------------------------------
+
+function Animation.Pop(object)
+
+	local scale = object:FindFirstChildOfClass("UIScale")
+
+	if not scale then
+		scale = Instance.new("UIScale")
+		scale.Parent = object
+	end
+
+	scale.Scale = 0.92
+
+	Animation.Play(scale,{
+		Scale = 1
+	})
+
+end
+
+--------------------------------------------------
+-- Hover
+--------------------------------------------------
+
+function Animation.Hover(frame, normal, hover)
+
+	frame.MouseEnter:Connect(function()
+
+		Animation.Play(frame,{
+			BackgroundColor3 = hover
+		})
+
+	end)
+
+	frame.MouseLeave:Connect(function()
+
+		Animation.Play(frame,{
+			BackgroundColor3 = normal
+		})
+
+	end)
+
+end
+
+--------------------------------------------------
+
+return Animation
+
+=========================================
+// FILE: 14_Main.lua
+=========================================
+
+--==================================================
+-- ModernDataUI
+-- 14_Main.lua
+--==================================================
+
+local Config = require(script.Parent["01_Config"])
+local Theme = require(script.Parent["02_Theme"])
+local Helpers = require(script.Parent["03_Helpers"])
+local UI = require(script.Parent["04_UI"])
+local Card = require(script.Parent["05_Card"])
+local Data = require(script.Parent["06_Data"])
+local Search = require(script.Parent["07_Search"])
+local Sort = require(script.Parent["08_Sort"])
+local Filter = require(script.Parent["09_Filter"])
+local Topbar = require(script.Parent["10_Topbar"])
+local ContextMenu = require(script.Parent["11_ContextMenu"])
+local Settings = require(script.Parent["12_Settings"])
+local Animation = require(script.Parent["13_Animation"])
+
+--------------------------------------------------
+-- Build UI
+--------------------------------------------------
+
+local Window = UI.Create()
+
+ContextMenu.Init(Window.Main)
+
+Topbar.Create(Window.Topbar)
+
+--------------------------------------------------
+-- Load Data
+--------------------------------------------------
+
+local All = Data.GetAll()
+
+for pageName, list in pairs(All) do
+
+	for _, item in ipairs(list) do
+
+		Card.Create(
+
+			pageName,
+
+			Window.Pages[pageName],
+
+			item
+
+		)
+
+	end
+
+end
+
+--------------------------------------------------
+-- Events
+--------------------------------------------------
+
+Topbar.Events.SearchChanged.Event:Connect(function(text)
+
+	Search.FilterAll(
+		Card.GetRegistry(),
+		text
+	)
+
+end)
+
+--------------------------------------------------
+-- Default Sort
+--------------------------------------------------
+
+Sort.TitleAZ(Card.GetRegistry().Seeds)
+Sort.TitleAZ(Card.GetRegistry().Pets)
+Sort.TitleAZ(Card.GetRegistry().Packs)
+
+--------------------------------------------------
+-- Done
+--------------------------------------------------
+
+print("ModernDataUI Loaded")
